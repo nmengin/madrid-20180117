@@ -53,15 +53,6 @@ Mum : "Understood! It's like HA Proxy!"
 </div>
 ```
 ```
-
-Note:
-
-Autres RP font d'autres choses que RP
-
-Serveur web, authentification
-
-Traefik ne fait que RP, on delègue le reste
-
 ---
 
 ## Why another Reverse Proxy?
@@ -120,21 +111,6 @@ Traefik ne fait que RP, on delègue le reste
 
 ![Features](./slides/images/wordcloud.png) <!-- .element: style="border:none; float: right; width: 50%; margin-top: -550px; margin-right:-150px"-->
 
-Note:
-
-* Reverse Proxy Dynamic  Written in GO (Single binary)  Open Source  Docker official image
-* Multi-Backends : Docker, SwarmMode, Kub, Meso/Marathon, Consul/ETCD2-3/ZK, DynamoDB, Eureka, RANCHER, Service Fabric (1.5)
-* Hot reloading
-* Load-balancing: WRR, DRR
-* Circuit breakers
-* Websockets
-* HTTP2
-* Monitoring : Prometheus, DataDog, StatD
-* 1.1 : CLUSTER MODE BASIC AUTH GLOBAL / FRONTEND (1.3)  SESSION AFFINITY
-* 1.2 :  HEALTHCHECKS TRAEFIK BUG
-* 1.4 : GRPC - AUTH FORWARD SSL REDIRECT, CUSTOM ERROR PAGES CUSTOM HEADERS, PROXY PROTOCOL MULTI ARCH, HSTS...
-* 1.5 : Rate limiting Dynamic TLS Custom Header Docker et Kube
-
 ---
 
 <!-- .slide: data-background="./slides/images/pray-cat.jpeg" -->
@@ -156,10 +132,6 @@ Note:
   * Stored in file or KV store <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ![LE](./slides/images/letsencrypt-logo.svg) <!-- .element: style="background-color:white; border: none;float: right; margin-right:-150px" class="fragment" data-fragment-index="4" -->
-
-Note:
-
-4 moyens
 
 -
 
