@@ -29,16 +29,26 @@ Mum : "..."
 Me : "Your Internet Box is like a proxy!"
 ```
 
-![Internet Box](./slides/images/box-wifi.png) <!-- .element: style="height:300px;width:600px;" class="fragment" data-fragment-index="1" -->
+![Internet Box](./slides/images/box-wifi.png) <!-- .element: style="margin-top: -10px;height:300px;width:600px;" class="fragment" data-fragment-index="1" -->
 
-<div class="fragment">
+<div class="fragment" style="margin-top: -30px;" >
 ```
 Me : "Træfik allows doing the reverse."
 ```
 </div>
-<div class="fragment">
+<div class="fragment" style="margin-top: -20px;">
 ```
-Mum : "OK! It's like Nginx and HA Proxy?!"
+Mum : "OK! It's like Nginx?!"
+```
+</div>
+<div class="fragment" style="margin-top: -20px;">
+```
+Me : "Not exactly! Nginx is a server web which can do RP."
+```
+</div>
+<div class="fragment" style="margin-top: -20px;">
+```
+Mum : "Understood! It's like HA Proxy!"
 ```
 </div>
 ```
@@ -95,7 +105,7 @@ Traefik ne fait que RP, on delègue le reste
 
 ## Træfik in details
 
-* Reverse Proxy Dynamic <!-- .element: style="margin-top: 40px; margin-left:-300px"-->
+* Reverse Proxy Dynamic <!-- .element: style=" margin-left:-300px"-->
 * Written in GO (Single binary) <!-- .element: style="margin-left:-300px"-->
 * Open Source <!-- .element: style="margin-left:-300px"-->
 * Docker official image <!-- .element: style="margin-left:-300px"-->
@@ -105,9 +115,25 @@ Traefik ne fait que RP, on delègue le reste
 * Circuit breakers <!-- .element: style="margin-left:-300px"-->
 * Websockets <!-- .element: style="margin-left:-300px"-->
 * HTTP2 <!-- .element: style="margin-left:-300px"-->
+* Prometheus, DataDog, StatD <!-- .element: style="margin-left:-300px"-->
 * ... <!-- .element: style="margin-left:-300px"-->
 
-![Features](./slides/images/wordcloud02.png) <!-- .element: style="border:none; float: right; width: 50%; margin-top: -500px; margin-right:-150px"-->
+![Features](./slides/images/wordcloud.png) <!-- .element: style="border:none; float: right; width: 50%; margin-top: -550px; margin-right:-150px"-->
+
+Note:
+
+* Reverse Proxy Dynamic  Written in GO (Single binary)  Open Source  Docker official image
+* Multi-Backends : Docker, SwarmMode, Kub, Meso/Marathon, Consul/ETCD2-3/ZK, DynamoDB, Eureka, RANCHER, Service Fabric (1.5)
+* Hot reloading
+* Load-balancing: WRR, DRR
+* Circuit breakers
+* Websockets
+* HTTP2
+* Monitoring : Prometheus, DataDog, StatD
+* 1.1 : CLUSTER MODE BASIC AUTH GLOBAL / FRONTEND (1.3)  SESSION AFFINITY
+* 1.2 :  HEALTHCHECKS TRAEFIK BUG
+* 1.4 : GRPC - AUTH FORWARD SSL REDIRECT, CUSTOM ERROR PAGES CUSTOM HEADERS, PROXY PROTOCOL MULTI ARCH, HSTS...
+* 1.5 : Rate limiting Dynamic TLS Custom Header Docker et Kube
 
 ---
 
@@ -117,7 +143,7 @@ Traefik ne fait que RP, on delègue le reste
 
 ---
 
-## Let's talk about SSL...
+## Let's talk about Security...
 
 * Auto-generated unsigned certificate <!-- .element: style="margin-top: 40px" class="fragment" data-fragment-index="1" -->
 * Statically provided certificates <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -175,7 +201,7 @@ Version 1.5</BR>
 # WE HAVE CHEESE <!-- .element: style="margin-top: 100px"-->
 -
 
-# I HAVE STICKERS
+# ... AND STICKERS
 
 ![Traefik](./slides/images/traefik-logo.png) <!-- .element: style="border:none" -->
 
