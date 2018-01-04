@@ -1,10 +1,14 @@
 # WHY TRAEFIK IS AWESOME <!-- .element: style="margin-left:-5px"-->
 
-![Traefik](./slides/images/traefik-logo-horizontal-white.svg) <!-- .element: style="border:none;" -->
+![Traefik](./slides/images/traefik.logo.horizontal.bright.svg) <!-- .element: style="border:none;" -->
 
 Meetup DevOps - Madrid - 2018/01/17
 
 <small>[Nicolas Mengin](http://twitter.com/nicomengin) - [Containous](http://twitter.com/containous)</small>
+
+Note:
+
+por venir tantos
 
 ---
 
@@ -18,16 +22,24 @@ Meetup DevOps - Madrid - 2018/01/17
 * Work @ Containous <!-- .element: class="fragment" data-fragment-index="4" -->
 * Maintainer of <!-- .element: class="fragment" data-fragment-index="4" --> [Træfik](https://traefik.io) <!-- .element: class="fragment" data-fragment-index="4" -->
 
+Note:
+
+* lengua materna
+* Vengo a menudo
+* desarrollador
+
 ---
 
 ## Træfik explained to my mother
 
+<div class="fragment">
 ```
 Mum : "What are you doing in your new company?"
 Me : "I am computing a Reverse Proxy."
 Mum : "..."
 Me : "Your Internet Box is like a proxy!"
 ```
+</div>
 <div class="fragment">
 ```
 Me : "Træfik allows doing the reverse."
@@ -55,19 +67,23 @@ Mum : "Understood! It's like HA Proxy!"
 </div>
 ![But](./slides/images/greatBut.gif) <!-- .element: class="fragment" style="border:none"-->
 
+
 Note:
 
-Autres RP font d'autres choses que RP
-
-Serveur web, authentification
-
-Traefik ne fait que RP, on delègue le reste
+* No sabia come empezar a hablar de Trafik y como presentarlo rapidamente
+* Y he pensado a una dicusion que tuve con mi madre
+* No debería haber dicho eso
+* Mi madre es muy sorprendente
 
 ---
 
 ## Why another Reverse Proxy?
 
 ![Why](./slides/images/why.gif) <!-- .element: style="height:500px;width:600px;"-->
+
+Note:
+
+es cierto que la primera pregunta
 
 -
 
@@ -94,7 +110,7 @@ Traefik ne fait que RP, on delègue le reste
 
 ## One Reverse Proxy to rule them all
 
-![Traefik](./slides/images/traefik-logo-white.svg)
+![Traefik](./slides/images/traefik.logo.bright.svg)
 
 -
 
@@ -194,17 +210,20 @@ Version 1.5</BR>
 <p style="margin-top:-20px;" class="fragment" data-fragment-index="1">1 year old</p>
 
 -
-
-# COME TO THE TRÆFIK SIDE <!-- .element: style="margin-top: 50px; margin-bottom: 100px"-->
+# COME TO THE TRÆFIK SIDE <!-- .element: style="margin-top: 0px; margin-bottom: 50px"-->
 
 <p style="font-size: 140%;">`docker run -it containous/jobs`</p>
 
-# WE HAVE CHEESE <!-- .element: style="margin-top: 100px"-->
+# WE HAVE CHEESE <!-- .element: style="margin-top: 50px"-->
+![Features](./slides/images/traefik-morbier.png) <!-- .element: style="border:none;  float: left; width: 12%; margin-top: -100px;"-->
+![Features](./slides/images/traefik-raclette.svg) <!-- .element: style="border:none; float: right; width: 20%;  margin-top: -100px; margin-right:-150px"-->
+![Features](./slides/images/traefik-roquefort.svg) <!-- .element: style="border:none; width: 25%;"-->
+
 -
 
 # ... AND STICKERS
 
-![Traefik](./slides/images/traefik-logo-white.svg) <!-- .element: style="border:none" -->
+![Traefik](./slides/images/traefik.logo.bright.svg) <!-- .element: style="border:none" -->
 
 
 ---
