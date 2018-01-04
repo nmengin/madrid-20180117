@@ -1,6 +1,6 @@
 # WHY TRAEFIK IS AWESOME <!-- .element: style="margin-left:-5px"-->
 
-![Traefik](./slides/images/traefik-logo-horizontal.svg) <!-- .element: style="border:none;" -->
+![Traefik](./slides/images/traefik-logo-horizontal-white.svg) <!-- .element: style="border:none;" -->
 
 Meetup DevOps - Madrid - 2018/01/17
 
@@ -28,31 +28,39 @@ Me : "I am computing a Reverse Proxy."
 Mum : "..."
 Me : "Your Internet Box is like a proxy!"
 ```
-
-![Internet Box](./slides/images/box-wifi.png) <!-- .element: style="margin-top: -10px;height:300px;width:600px;" class="fragment" data-fragment-index="1" -->
-
-<div class="fragment" style="margin-top: -30px;" >
+<div class="fragment">
 ```
 Me : "Træfik allows doing the reverse."
 ```
 </div>
-<div class="fragment" style="margin-top: -20px;">
+<div class="fragment">
 ```
 Mum : "OK! It's like Nginx?!"
 ```
 </div>
-<div class="fragment" style="margin-top: -20px;">
+<div class="fragment">
 ```
-Me : "Not exactly! Nginx is a server web which can do RP."
+Me : "Not exactly! Nginx is a server web.
+      But, it can be used as Reverse Proxy too..."
 ```
 </div>
-<div class="fragment" style="margin-top: -20px;">
+<div class="fragment" >
 ```
 Mum : "Understood! It's like HA Proxy!"
 ```
 </div>
 ```
 ```
+![But](./slides/images/greatBut.gif) <!-- .element: class="fragment" style="border:none"-->
+
+Note:
+
+Autres RP font d'autres choses que RP
+
+Serveur web, authentification
+
+Traefik ne fait que RP, on delègue le reste
+
 ---
 
 ## Why another Reverse Proxy?
@@ -78,13 +86,13 @@ Mum : "Understood! It's like HA Proxy!"
 ![New archi](./slides/images/newarchi-RP.png) <!-- .element: style="background-color:white; height:480px; margin-top:-20px; margin-bottom: -35px" class="fragment fade-out" data-fragment-index="1" -->
 ![New archi02](./slides/images/newarchi-RP-config.png) <!-- .element: style="background-color:white; height:480px; margin-top:-500px;" class="fragment" data-fragment-index="1" -->
 
-<p style="margin-top:-50px;font-size: 150%;color:white" class="fragment">**How to configure statically dynamic infrastructures?**</p>
+<p style="margin-top:-40px;font-size: 125%;color:white" class="fragment">**How to configure dynamic infrastructures?**</p>
 
 ---
 
 ## One Reverse Proxy to rule them all
 
-![Traefik](./slides/images/traefik-logo.svg)
+![Traefik](./slides/images/traefik-logo-white.svg)
 
 -
 
@@ -111,6 +119,21 @@ Mum : "Understood! It's like HA Proxy!"
 
 ![Features](./slides/images/wordcloud.png) <!-- .element: style="border:none; float: right; width: 50%; margin-top: -550px; margin-right:-150px"-->
 
+Note:
+
+* Reverse Proxy Dynamic  Written in GO (Single binary)  Open Source  Docker official image
+* Multi-Backends : Docker, SwarmMode, Kub, Meso/Marathon, Consul/ETCD2-3/ZK, DynamoDB, Eureka, RANCHER, Service Fabric (1.5)
+* Hot reloading
+* Load-balancing: WRR, DRR
+* Circuit breakers
+* Websockets
+* HTTP2
+* Monitoring : Prometheus, DataDog, StatD
+* 1.1 : CLUSTER MODE BASIC AUTH GLOBAL / FRONTEND (1.3)  SESSION AFFINITY
+* 1.2 :  HEALTHCHECKS TRAEFIK BUG
+* 1.4 : GRPC - AUTH FORWARD SSL REDIRECT, CUSTOM ERROR PAGES CUSTOM HEADERS, PROXY PROTOCOL MULTI ARCH, HSTS...
+* 1.5 : Rate limiting Dynamic TLS Custom Header Docker et Kube
+
 ---
 
 <!-- .slide: data-background="./slides/images/pray-cat.jpeg" -->
@@ -131,11 +154,15 @@ Mum : "Understood! It's like HA Proxy!"
   * Renewed automatically <!-- .element: class="fragment" data-fragment-index="4" -->
   * Stored in file or KV store <!-- .element: class="fragment" data-fragment-index="4" -->
 
-![LE](./slides/images/letsencrypt-logo.svg) <!-- .element: style="background-color:white; border: none;float: right; margin-right:-150px" class="fragment" data-fragment-index="4" -->
+![LE](./slides/images/letsencrypt-logo.svg) <!-- .element: style="background-color:white; border: none;float: right; margin-top: -10px; margin-right:-150px" class="fragment" data-fragment-index="4" -->
+
+Note:
+
+4 moyens
 
 -
 
-## .. And High Avaibility
+## .. And High Availability
 
 * Based on ETCD raft <!-- .element: style="margin-top: 40px" class="fragment" data-fragment-index="1" -->
   * One leader and  <!-- .element: class="fragment" data-fragment-index="2" --> _n_  <!-- .element: class="fragment" data-fragment-index="2" --> workers <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -160,13 +187,13 @@ Version 1.5</BR>
 +1200 LGTM</BR>
 +220 Contributors
 
-<p style="margin-top:40px; font-size: 200%;" class="fragment" data-fragment-index="1">**Containous**</p>
+<p style="font-size: 200%;" class="fragment" data-fragment-index="1">**Containous**</p>
 <p class="fragment" data-fragment-index="1">Raised 1M€</p>
 <p style="margin-top:-20px;" class="fragment" data-fragment-index="1">1 year old</p>
 
 -
 
-# COME TO THE TRÆFIK SIDE <!-- .element: style="margin-bottom: 100px"-->
+# COME TO THE TRÆFIK SIDE <!-- .element: style="margin-top: 50px; margin-bottom: 100px"-->
 
 <p style="font-size: 140%;">`docker run -it containous/jobs`</p>
 
@@ -175,7 +202,7 @@ Version 1.5</BR>
 
 # ... AND STICKERS
 
-![Traefik](./slides/images/traefik-logo.png) <!-- .element: style="border:none" -->
+![Traefik](./slides/images/traefik-logo-white.svg) <!-- .element: style="border:none" -->
 
 
 ---
