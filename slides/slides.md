@@ -12,21 +12,20 @@ por venir tantos
 
 ---
 
-## A frenchman in Madrid <!-- .element: style="margin-bottom:100px"-->
+## docker inspect me <!-- .element: style="margin-bottom:100px"-->
 
-* French <!-- .element: class="fragment" data-fragment-index="1" -->
-* ❤ Spain ❤ <!-- .element: class="fragment" data-fragment-index="2" -->
-* Developer for 12 years <!-- .element: class="fragment" data-fragment-index="3" -->
-* Part time DevOps <!-- .element: class="fragment" data-fragment-index="3" -->
-* ❤ Java, Go, Shell, Docker World ❤ <!-- .element: class="fragment" data-fragment-index="3" -->
-* Work @ Containous <!-- .element: class="fragment" data-fragment-index="4" -->
-* Maintainer of <!-- .element: class="fragment" data-fragment-index="4" --> [Træfik](https://traefik.io) <!-- .element: class="fragment" data-fragment-index="4" -->
+* Developer for 12 years <!-- .element: class="fragment" data-fragment-index="1" -->
+* Part time DevOps <!-- .element: class="fragment" data-fragment-index="1" -->
+* ❤ Java, Shell, Docker World, GO ❤ <!-- .element: class="fragment" data-fragment-index="1" -->
+* Work @ Containous <!-- .element: class="fragment" data-fragment-index="2" -->
+* Maintainer of <!-- .element: class="fragment" data-fragment-index="2" --> [Træfik](https://traefik.io) <!-- .element: class="fragment" data-fragment-index="2" -->
+* French <!-- .element: class="fragment" data-fragment-index="3" -->
+* ❤ Spain ❤ <!-- .element: class="fragment" data-fragment-index="4" -->
 
 Note:
 
-* lengua materna
-* Vengo a menudo
 * desarrollador
+* lengua materna
 
 ---
 
@@ -52,7 +51,7 @@ Mum : "OK! It's like Nginx?!"
 </div>
 <div class="fragment">
 ```
-Me : "Not exactly! Nginx is a server web.
+Me : "Not exactly! Nginx is a web server.
       But, it can be used as Reverse Proxy too..."
 ```
 </div>
@@ -67,13 +66,13 @@ Mum : "Understood! It's like HA Proxy!"
 </div>
 ![But](./slides/images/greatBut.gif) <!-- .element: class="fragment" style="border:none"-->
 
-
 Note:
 
-* No sabia come empezar a hablar de Trafik y como presentarlo rapidamente
-* Y he pensado a una dicusion que tuve con mi madre
+* No sabia come empezar a hablar de Traefik y como presentarlo rapidamente
+* Pensado a una dicusion que tuve con mi madre y os la voy a presentar
 * No debería haber dicho eso
 * Mi madre es muy sorprendente
+* Despues, no sabia que contestarla... Pero tiene razon y es cierto que la primera pregunta
 
 ---
 
@@ -83,7 +82,7 @@ Note:
 
 Note:
 
-es cierto que la primera pregunta
+* Para entender bien, propuesto de hacer un poco de historia
 
 -
 
@@ -96,6 +95,12 @@ es cierto que la primera pregunta
 <p style="margin-top:200px;font-size: 200%;color:white" class="fragment">**In a static way!!**</p>
 
 ![Old archi](./slides/images/old-archi.png) <!-- .element: style="float: right; width: 60%; margin-right:-200px; margin-top:-500px"-->
+
+Note:
+
+* Aqui es una infracstrure como **fue hecho** antes : DB + servicios web + RP
+* Para a#0164;adir un nuevo servicios, tuvimos que **despegar** lo
+* Configurar el RP
 
 -
 
