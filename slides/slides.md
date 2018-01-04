@@ -49,7 +49,10 @@ Me : "Not exactly! Nginx is a server web.
 Mum : "Understood! It's like HA Proxy!"
 ```
 </div>
-
+<div style="display: none;">
+```
+```
+</div>
 ![But](./slides/images/greatBut.gif) <!-- .element: class="fragment" style="border:none"-->
 
 Note:
