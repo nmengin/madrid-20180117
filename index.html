@@ -1,218 +1,66 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <title></title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href=".//css/reveal.css">
-  <style type="text/css">code{white-space: pre;}</style>
-  <link rel="stylesheet" href=".//css/theme/black.css" id="theme">
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? './/css/print/pdf.css' : './/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src=".//lib/js/html5shiv.js"></script>
-  <![endif]-->
+	<meta charset="utf-8">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<!-- There are bunch of alternate themes in css/theme -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="css/theme/moon.css" id="theme">
 </head>
+
 <body>
-  <div class="reveal">
-    <div class="slides">
 
+	<div class="reveal">
 
-<section><section id="why-traefik-is-awesome" class="titleslide slide level1"><h1>WHY TRAEFIK IS AWESOME <!-- .element: style="margin-left:-5px"--></h1></section><section id="a-frenchman-in-madrid" class="slide level2">
-<h2>A frenchman in Madrid <!-- .element: style="margin-bottom:100px"--></h2>
-<ul>
-<li>French <!-- .element: class="fragment" data-fragment-index="1" --></li>
-<li>❤ Spain ❤ <!-- .element: class="fragment" data-fragment-index="2" --></li>
-<li>Developer for 12 years <!-- .element: class="fragment" data-fragment-index="3" --></li>
-<li>Part time DevOps <!-- .element: class="fragment" data-fragment-index="3" --></li>
-<li>❤ Java, Go, Shell, Docker World ❤ <!-- .element: class="fragment" data-fragment-index="3" --></li>
-<li>Work @ Containous <!-- .element: class="fragment" data-fragment-index="4" --></li>
-<li>Maintainer of <!-- .element: class="fragment" data-fragment-index="4" --> <a href="https://traefik.io">Træfik</a> <!-- .element: class="fragment" data-fragment-index="4" --></li>
-</ul>
-</section><section id="træfik-explained-to-my-mother" class="slide level2">
-<h2>Træfik explained to my mother</h2>
-<pre><code>Mum : &quot;What are you doing in your new company?&quot;
-Me : &quot;I am computing a Reverse Proxy.&quot;
-Mum : &quot;...&quot;
-Me : &quot;Your Internet Box is like a proxy!&quot;</code></pre>
-<p><img src="./slides/images/box-wifi.png" alt="Internet Box" /> <!-- .element: style="margin-top: -10px;height:300px;width:600px;" class="fragment" data-fragment-index="1" --></p>
-<div class="fragment" style="margin-top: -30px;">
-<pre><code>Me : &quot;Træfik allows doing the reverse.&quot;</code></pre>
-</div>
-<div class="fragment" style="margin-top: -20px;">
-<pre><code>Mum : &quot;OK! It&#39;s like Nginx?!&quot;</code></pre>
-</div>
-<div class="fragment" style="margin-top: -20px;">
-<pre><code>Me : &quot;Not exactly! Nginx is a server web which can do RP.&quot;</code></pre>
-</div>
-<div class="fragment" style="margin-top: -20px;">
-<pre><code>Mum : &quot;Understood! It&#39;s like HA Proxy!&quot;</code></pre>
-</div>
-<pre><code></code></pre>
-<p>Note:</p>
-<p>Autres RP font d'autres choses que RP</p>
-<p>Serveur web, authentification</p>
-<p>Traefik ne fait que RP, on delègue le reste</p>
-</section><section id="why-another-reverse-proxy" class="slide level2">
-<h2>Why another Reverse Proxy?</h2>
-<p><img src="./slides/images/why.gif" alt="Why" /> <!-- .element: style="height:500px;width:600px;"--></p>
-<ul>
-<li></li>
-</ul>
-</section><section id="a-long-time-ago-in-a-galaxy-far-far-away...." class="slide level2">
-<h2>A long time ago in a galaxy far, far away.... <!-- .element: style="margin-left:-50px"--></h2>
-<ol type="1">
-<li>Deploy a service to expose <!-- .element: style="margin-top: 100px; margin-left:-400px" class="fragment" data-fragment-index="1" --></li>
-<li>Configure the Reverse Proxy <!-- .element: style="margin-left:-400px" class="fragment" data-fragment-index="2" --></li>
-<li>Reload/Restart it. <!-- .element: style="margin-left:-400px" class="fragment" data-fragment-index="3" --></li>
-</ol>
-<p style="margin-top:200px;font-size: 200%;color:white" class="fragment">
-<strong>In a static way!!</strong>
-</p>
-<p><img src="./slides/images/old-archi.png" alt="Old archi" /> <!-- .element: style="float: right; width: 60%; margin-right:-200px; margin-top:-500px"--></p>
-<ul>
-<li></li>
-</ul>
-</section><section id="static-infrastructure-is-almost-dead" class="slide level2">
-<h2>Static infrastructure is (almost) dead!</h2>
-<p><img src="./slides/images/newarchi-RP.png" alt="New archi" /> <!-- .element: style="background-color:white; height:480px; margin-top:-20px; margin-bottom: -35px" class="fragment fade-out" data-fragment-index="1" --> <img src="./slides/images/newarchi-RP-config.png" alt="New archi02" /> <!-- .element: style="background-color:white; height:480px; margin-top:-500px;" class="fragment" data-fragment-index="1" --></p>
-<p style="margin-top:-50px;font-size: 150%;color:white" class="fragment">
-<strong>How to configure statically dynamic infrastructures?</strong>
-</p>
-</section><section id="one-reverse-proxy-to-rule-them-all" class="slide level2">
-<h2>One Reverse Proxy to rule them all</h2>
-<figure>
-<img src="./slides/images/traefik-logo.svg" alt="Traefik" /><figcaption>Traefik</figcaption>
-</figure>
-<ul>
-<li></li>
-</ul>
-<h3 id="dynamic-configuration-for-dynamic-infrastruture">Dynamic configuration for dynamic infrastruture</h3>
-<p><img src="./slides/images/newarchi-Traefik.png" alt="New archi" /> <!-- .element: style="background-color:white;"--></p>
-<ul>
-<li></li>
-</ul>
-</section><section id="træfik-in-details" class="slide level2">
-<h2>Træfik in details</h2>
-<ul>
-<li>Reverse Proxy Dynamic <!-- .element: style=" margin-left:-300px"--></li>
-<li>Written in GO (Single binary) <!-- .element: style="margin-left:-300px"--></li>
-<li>Open Source <!-- .element: style="margin-left:-300px"--></li>
-<li>Docker official image <!-- .element: style="margin-left:-300px"--></li>
-<li>Multi-Backends <!-- .element: style="margin-left:-300px"--></li>
-<li>Hot reloading <!-- .element: style="margin-left:-300px"--></li>
-<li>Load-balancing: WRR, DRR <!-- .element: style="margin-left:-300px"--></li>
-<li>Circuit breakers <!-- .element: style="margin-left:-300px"--></li>
-<li>Websockets <!-- .element: style="margin-left:-300px"--></li>
-<li>HTTP2 <!-- .element: style="margin-left:-300px"--></li>
-<li>Prometheus, DataDog, StatD <!-- .element: style="margin-left:-300px"--></li>
-<li>... <!-- .element: style="margin-left:-300px"--></li>
-</ul>
-<p><img src="./slides/images/wordcloud.png" alt="Features" /> <!-- .element: style="border:none; float: right; width: 50%; margin-top: -550px; margin-right:-150px"--></p>
-<p>Note:</p>
-<ul>
-<li>Reverse Proxy Dynamic Written in GO (Single binary) Open Source Docker official image</li>
-<li>Multi-Backends : Docker, SwarmMode, Kub, Meso/Marathon, Consul/ETCD2-3/ZK, DynamoDB, Eureka, RANCHER, Service Fabric (1.5)</li>
-<li>Hot reloading</li>
-<li>Load-balancing: WRR, DRR</li>
-<li>Circuit breakers</li>
-<li>Websockets</li>
-<li>HTTP2</li>
-<li>Monitoring : Prometheus, DataDog, StatD</li>
-<li>1.1 : CLUSTER MODE BASIC AUTH GLOBAL / FRONTEND (1.3) SESSION AFFINITY</li>
-<li>1.2 : HEALTHCHECKS TRAEFIK BUG</li>
-<li>1.4 : GRPC - AUTH FORWARD SSL REDIRECT, CUSTOM ERROR PAGES CUSTOM HEADERS, PROXY PROTOCOL MULTI ARCH, HSTS...</li>
-<li>1.5 : Rate limiting Dynamic TLS Custom Header Docker et Kube</li>
-</ul>
-</section><section class="slide level2">
+		<div class="slides">
+			<section data-markdown="slides/slides.md" data-separator="^---\n" data-separator-vertical="^-\n" data-notes="^Note:" data-charset="utf-8">
+			</section>
+		</div>
 
-<!-- .slide: data-background="./slides/images/pray-cat.jpeg" -->
-</section></section>
-<section><section id="demo" class="titleslide slide level1"><h1>DEMO <!-- .element: style="float: right; width: 50%; margin-right:-200px; color: white"--></h1></section><section id="lets-talk-about-security..." class="slide level2">
-<h2>Let's talk about Security...</h2>
-<ul>
-<li>Auto-generated unsigned certificate <!-- .element: style="margin-top: 40px" class="fragment" data-fragment-index="1" --></li>
-<li>Statically provided certificates <!-- .element: class="fragment" data-fragment-index="2" --></li>
-<li>Dynamically provided certificates <!-- .element: class="fragment" data-fragment-index="3" --></li>
-<li>File and KV store <!-- .element: class="fragment" data-fragment-index="3" --></li>
-<li>Let's Encrypt certificates <!-- .element: class="fragment" data-fragment-index="4" --></li>
-<li>SSL and DNS Challenges <!-- .element: class="fragment" data-fragment-index="4" --></li>
-<li>Dynamic <!-- .element: class="fragment" data-fragment-index="4" --></li>
-<li>Renewed automatically <!-- .element: class="fragment" data-fragment-index="4" --></li>
-<li>Stored in file or KV store <!-- .element: class="fragment" data-fragment-index="4" --></li>
-</ul>
-<p><img src="./slides/images/letsencrypt-logo.svg" alt="LE" /> <!-- .element: style="background-color:white; border: none;float: right; margin-right:-150px" class="fragment" data-fragment-index="4" --></p>
-<p>Note:</p>
-<p>4 moyens</p>
-<ul>
-<li></li>
-</ul>
-</section><section id="and-high-avaibility" class="slide level2">
-<h2>.. And High Avaibility</h2>
-<ul>
-<li>Based on ETCD raft <!-- .element: style="margin-top: 40px" class="fragment" data-fragment-index="1" --></li>
-<li>One leader and <!-- .element: class="fragment" data-fragment-index="2" --> <em>n</em> <!-- .element: class="fragment" data-fragment-index="2" --> workers <!-- .element: class="fragment" data-fragment-index="2" --></li>
-<li>Automatic leader Election <!-- .element: class="fragment" data-fragment-index="2" --></li>
-<li>Use external KV store : <!-- .element: style="margin-top: 20px" class="fragment" data-fragment-index="3" --></li>
-<li>Store and share configuration <!-- .element: class="fragment" data-fragment-index="3" --></li>
-<li><h2 id="store-and-share-acme-certificates">Store and share ACME certificates <!-- .element: class="fragment" data-fragment-index="3" --></h2></li>
-</ul>
-<!-- .slide: data-background="./slides/images/pray02.jpg" data-background-size="1500px" -->
-</section></section>
-<section><section id="demo-1" class="titleslide slide level1"><h1>DEMO <!-- .element: style="margin-top:200px; color: white"--></h1></section><section id="some-key-figures" class="slide level2">
-<h2>Some key figures</h2>
-<p style="font-size: 200%;">
-<strong>Træfik</strong>
-</p>
-<p>Version 1.5</BR> +12000 ☆</BR> +30M Downloads</BR> +1200 LGTM</BR> +220 Contributors</p>
-<p style="margin-top:40px; font-size: 200%;" class="fragment" data-fragment-index="1">
-<strong>Containous</strong>
-</p>
-<p class="fragment" data-fragment-index="1">
-Raised 1M€
-</p>
-<p style="margin-top:-20px;" class="fragment" data-fragment-index="1">
-1 year old
-</p>
-<ul>
-<li></li>
-</ul>
-</section></section>
-<section><section id="come-to-the-træfik-side" class="titleslide slide level1"><h1>COME TO THE TRÆFIK SIDE <!-- .element: style="margin-bottom: 100px"--></h1></section><section id="we-have-cheese" class="slide level2">
-<h2># WE HAVE CHEESE <!-- .element: style="margin-top: 100px"--></h2>
-</section></section>
-<section><section id="and-stickers" class="titleslide slide level1"><h1>... AND STICKERS</h1></section><section class="slide level2">
+	</div>
 
-</section></section>
-<section><section id="thank-you" class="titleslide slide level1"><h1>THANK YOU <!-- .element: style="margin-bottom: 100px;"--></h1></section></section>
-    </div>
-  </div>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
 
-  <script src=".//lib/js/head.min.js"></script>
-  <script src=".//js/reveal.js"></script>
+	<script>
+		// Full list of configuration options available at:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: false,
+			progress: false,
+			history: true,
+			center: false,
 
-  <script>
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-      // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
+			// Optional reveal.js plugins
+			dependencies: [{
+				src: 'lib/js/classList.js',
+				condition: function() {
+					return !document.body.classList;
+				}
+			}, {
+				src: 'plugin/markdown/marked.js',
+				condition: function() {
+					return !!document.querySelector('[data-markdown]');
+				}
+			}, {
+				src: 'plugin/markdown/markdown.js',
+				condition: function() {
+					return !!document.querySelector('[data-markdown]');
+				}
+			}]
+		});
+		Reveal.configure({ slideNumber: 'c/t' }););
+	</script>
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: './/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: './/plugin/zoom-js/zoom.js', async: true },
-              { src: './/plugin/notes/notes.js', async: true }
-        ]
-      });
-    </script>
-    </body>
+</body>
+
 </html>
