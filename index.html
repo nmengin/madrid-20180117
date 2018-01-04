@@ -13,6 +13,27 @@
 	<!-- There are bunch of alternate themes in css/theme -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link rel="stylesheet" href="css/theme/moon.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+	<!-- Live reload -->
+	<script type="text/javascript">
+		document.write('<script src="//' + window.location.hostname + ':35729/livereload.js"><' + '/script>');
+	</script>
 </head>
 
 <body>
@@ -20,7 +41,7 @@
 	<div class="reveal">
 
 		<div class="slides">
-			<section data-markdown="slides/slides.md" data-separator="^---\n" data-separator-vertical="^-\n" data-charset="utf-8">
+			<section data-markdown="slides/slides.md" data-separator="^---\n" data-separator-vertical="^-\n" data-notes="^Note:" data-charset="utf-8">
 			</section>
 		</div>
 
@@ -56,9 +77,32 @@
 				condition: function() {
 					return !!document.querySelector('[data-markdown]');
 				}
-			});
+			}, {
+				src: 'plugin/highlight/highlight.js',
+				async: true,
+				condition: function() {
+					return !!document.querySelector('pre code');
+				},
+				callback: function() {
+					hljs.initHighlightingOnLoad();
+				}
+			}, {
+				src: 'plugin/zoom-js/zoom.js',
+				async: true
+			}, {
+				src: 'plugin/notes/notes.js',
+				async: true
+			}]
+		});
 		Reveal.configure({ slideNumber: 'c/t' });
-		);
+		document.addEventListener("DOMContentLoaded", function() {
+			Reveal.configure({
+				keyboard: {
+					40: 'next', // down moves to next slide - for my clicker
+					38: 'prev', // up moves to previous slide - for my clicker
+				}
+			});
+		});
 	</script>
 
 </body>
