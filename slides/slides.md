@@ -98,8 +98,8 @@ Note:
 
 Note:
 
-* Aqui es una infracstrure como **fue hecho** antes : DB + servicios web + RP
-* Para a#0164;adir un nuevo servicios, tuvimos que **despegar** lo
+* Aqui es una infraestructura como **fue hecho** antes : DB + servicios web + RP
+* Para anadir un nuevo servicios, tuvimos que **despegar** lo
 * Configurar el RP
 
 -
@@ -110,6 +110,18 @@ Note:
 ![New archi02](./slides/images/newarchi-RP-config.png) <!-- .element: style="background-color:white; height:480px; margin-top:-500px;" class="fragment" data-fragment-index="1" -->
 
 <p style="margin-top:-40px;font-size: 125%;color:white" class="fragment">**How to configure dynamic infrastructures?**</p>
+
+Note:
+
+* Ahora, es el tiempo de los µ-servicios!
+* Declaramos servicios para las API, los backoffices
+* Podemos crear differentes replicas de uno servicios
+* Todo **administrado** en containers Docker con un orchestrator como Kubernetes.
+
+**TODO ES DYNAMICO**
+
+* Pero, con los RP tradicionales, la configuracion sigue de ser statica en ficheros!
+* La pregunta es : **Como configurar de manera dynamica?** Y la respuesta es ...
 
 ---
 
@@ -122,6 +134,10 @@ Note:
 ### Dynamic configuration for dynamic infrastruture
 
 ![New archi](./slides/images/newarchi-Traefik.png) <!-- .element: style="background-color:white;"-->
+
+Note:
+
+* Traefik va a escutar las API de los orchestratores para **anadir o suprimir las configuraciones de manera automática**
 
 -
 
@@ -167,32 +183,107 @@ Note:
 
 ## Let's talk about Security...
 
-* Auto-generated unsigned certificate <!-- .element: style="margin-top: 40px" class="fragment" data-fragment-index="1" -->
-* Statically provided certificates <!-- .element: class="fragment" data-fragment-index="2" -->
-* Dynamically provided certificates <!-- .element: class="fragment" data-fragment-index="3" -->
-  * File and KV store <!-- .element: class="fragment" data-fragment-index="3" -->
-* Let's Encrypt certificates <!-- .element: class="fragment" data-fragment-index="4" -->
+* Auto-generated unsigned certificate <!-- .element: style="margin-top: 40px; margin-left: -150px" class="fragment" data-fragment-index="1" -->
+* Statically provided certificates <!-- .element: style="margin-left: -150px" class="fragment" data-fragment-index="2" -->
+* Dynamically provided certificates <!-- .element: style="margin-left: -150px"  class="fragment" data-fragment-index="3" -->
+  * File and KV store <!-- .element:  class="fragment" data-fragment-index="3" -->
+* Let's Encrypt certificates <!-- .element: style="margin-left: -150px"  class="fragment" data-fragment-index="4" -->
   * SSL and DNS Challenges <!-- .element: class="fragment" data-fragment-index="4" -->
   * Dynamic <!-- .element: class="fragment" data-fragment-index="4" -->
   * Renewed automatically <!-- .element: class="fragment" data-fragment-index="4" -->
   * Stored in file or KV store <!-- .element: class="fragment" data-fragment-index="4" -->
 
-![LE](./slides/images/letsencrypt-logo.svg) <!-- .element: style="background-color:white; border: none;float: right; margin-top: -10px; margin-right:-150px" class="fragment" data-fragment-index="4" -->
+<div style="float: right; width: 40%; margin-top: -450px; margin-right: -200px" data-fragment-index="1" class="fragment">
+<div data-fragment-index="2" class="fragment fade-out" >
+```toml
+[entryPoints]
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+```
+</div>
+</div>
+<div style="float: right; width: 62%; margin-top: -400px; margin-right: -300px" data-fragment-index="2" class="fragment">
+<div data-fragment-index="3" class="fragment fade-out" >
+```toml
+[entryPoints]
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+      [[entryPoints.https.tls.certificates]]
+       CertFile = "/snitest.com.cert"
+       KeyFile = "/snitest.com.key"
+```
+</div>
+</div>
+<div style="float: right;  width: 50%; margin-top: -350px; margin-right: -200px" data-fragment-index="3" class="fragment">
+<div data-fragment-index="4" class="fragment fade-out" >
+```toml
+[entryPoints]
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+
+[file]
+
+[[tlsConfiguration]]
+entryPoints = ["https"]
+  [tlsConfiguration.certificate]
+     CertFile = "/snitest.com.cert"
+     KeyFile = "/snitest.com.key"
+```
+</div>
+</div>
+<div style="float: right; width: 40%; margin-top: -250px; margin-right: -200px" data-fragment-index="4" class="fragment">
+```toml
+[entryPoints]
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+
+[acme]
+email = "test@traefik.io"
+storage = "/acme.json"
+entryPoint = "https"
+OnHostRule = true
+```
+</div>
+![LE](./slides/images/letsencrypt-logo.svg) <!-- .element: style="display:none" class="fragment" data-fragment-index="4" -->
 
 Note:
 
-4 moyens
+* Ahora os propueto de ver unas	**funcionalidades** necesarias en produccion
+* En primero, los certificados SSL
+* En traefik, hay 4 manera de utilisarlos
+
+* Cuando un TLS entryPoint esta creado, desde la ultima version, Traefik va a crear un certificada self-signed. Se puede utilizar por un servidor privado o durante los tests de integracion de Traefik en una infraestructura.
+* Certificados se pueden anadir de manera statica, directamente en un EntryPoints. Pero, de esta manera, no es posible de modificar o suprimir un certificado o anadir un nuevo certificado en un Entrypoint sin **reinicializar** a Traefik.
+* Desde la ultima version, certificados se pueden anadir de manera dynamica. De esta manera, es posible de modificar o suprimir un certificado o anadir un nuevo certificado en un Entrypoint sin **reinicializar** a Traefik. Pero hoy, es solo conlos providers files y KV stores. **Kubernetes eb la proxima version**
+* La ultima manera es de utilizar Let's Encypt en Traefik. Con un poco de configuracion, Traefik va a :
+  * Crear un SSl o DNS Challenge
+  * Y despues va crear y **prorrogar** los certificados de manera automatica y dynamica
+  * Los certificados se pueden **preservar** en un fichero o un KV store
 
 -
 
 ## .. And High Availability
 
-* Based on ETCD raft <!-- .element: style="margin-top: 40px" class="fragment" data-fragment-index="1" -->
+* Based on<!-- .element: style="margin-top: 40px; margin-left: -150px" class="fragment" data-fragment-index="1" --> [Raft Consensus Algortihm](https://raft.github.io/) <!-- .element: style="margin-top: 40px" class="fragment" data-fragment-index="1" -->
   * One leader and  <!-- .element: class="fragment" data-fragment-index="2" --> _n_  <!-- .element: class="fragment" data-fragment-index="2" --> workers <!-- .element: class="fragment" data-fragment-index="2" -->
   * Automatic leader Election <!-- .element: class="fragment" data-fragment-index="2" -->
-* Use external KV store : <!-- .element: style="margin-top: 20px" class="fragment" data-fragment-index="3" -->
+* Use external KV store : <!-- .element: style="margin-top: 20px; margin-left: -150px" class="fragment" data-fragment-index="3" -->
   * Store and share configuration <!-- .element: class="fragment" data-fragment-index="3" -->
   * Store and share ACME certificates <!-- .element: class="fragment" data-fragment-index="3" -->
+
+![Cluster](./slides/images/cluster.svg) <!-- .element: style="background-color:white; height:600px; border: none; float: right; margin-top: -375px; margin-right:-225px;" class="fragment" data-fragment-index="4" -->
+
+Note:
+
+* La otra **funcionalidad** es la HA
+* Traefik se puede utilizar en cluster que se baza en el raft.
+* Cuando el leader se va, una nueva eleccion permitte de **sustituirlo con** une worker de manera automatica
+* **preservar y conpartir**
+* El grafico enena como functiona un cluster de Traefik con ACME. El leader va a hacer los challenges y escribir los nuevos certificados en el KV store. Los otros van a anadir los certificados desde el KV store.
 ---
 
 <!-- .slide: data-background="./slides/images/pray02.jpg" data-background-size="1500px" -->
@@ -214,6 +305,17 @@ Version 1.5</BR>
 <p class="fragment" data-fragment-index="1">Raised 1M€</p>
 <p style="margin-top:-20px;" class="fragment" data-fragment-index="1">1 year old</p>
 
+Note:
+
+### TRAEFIK
+
+* **descargas**
+* **contribuyentes**
+
+### Containous
+
+* la empreza detras de Traefik
+* **una recaudación de fondos**
 -
 # COME TO THE TRÆFIK SIDE <!-- .element: style="margin-top: 0px; margin-bottom: 50px"-->
 
@@ -241,4 +343,4 @@ Version 1.5</BR>
 </BR>
 [@nicomengin](http://twitter.com/nicomengin)
 </BR>
-[nmengin.io.github/madrid-20180117](https://nmengin.io.github/madrid-20180117)
+[nmengin.github.io/madrid-20180117](https://nmengin.github.io/madrid-20180117)
